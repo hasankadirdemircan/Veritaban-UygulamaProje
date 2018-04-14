@@ -5,9 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -28,28 +26,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.hkadirdemircan.otogalarim.Models.LoginPojo;
-import com.hkadirdemircan.otogalarim.RestApi.ManagerAll;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
      */
     private static final int REQUEST_READ_CONTACTS = 0;
-    SharedPreferences sharedPreferences;
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -61,27 +51,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-   // private UserLoginTask mAuthTask = null;
+ //   private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private  TextView registerText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
-        if(sharedPreferences.getString("uye_id",null) != null && sharedPreferences.getString("uye_KullaniciAdi",null) != null )
-        {
-            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-            startActivity(intent);
-        }
-
+        setContentView(R.layout.activity_register);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -108,17 +89,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-        registerText = (TextView) findViewById(R.id.registerText);
-        registerText.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
 
     private void populateAutoComplete() {
@@ -171,8 +141,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
-
-
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -209,10 +177,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-           // showProgress(true);
-            login(email, password);
-        //    mAuthTask = new UserLoginTask(email, password);
-        //    mAuthTask.execute((Void) null);
+          // showProgress(true);
+
         }
     }
 
@@ -299,7 +265,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity.this,
+                new ArrayAdapter<>(RegisterActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -316,36 +282,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    public void login(String ad, String sifre){
-        final Call<LoginPojo> request = ManagerAll.getInstance().login(ad,sifre);
-        request.enqueue(new Callback<LoginPojo>() {
-            @Override
-            public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response) {
-              //  Log.i("deneme", response.body().toString());
-                if(response.isSuccessful())
-                 {
-                     if(response.body().getKadi() != null && response.body().getId() != null)
-                     {
-                         String uyeId = response.body().getId().toString();
-                         String kullaniciAdi = response.body().getKadi().toString();
-                         sharedPreferences = getApplicationContext().getSharedPreferences("giris", 0);//giris yapmis olanı birdaha sifre girmesin
-                         SharedPreferences.Editor editor = sharedPreferences.edit();
-                         editor.putString("uye_id", uyeId);
-                         editor.putString("uye_KullaniciAdi",kullaniciAdi);
-                         editor.commit();
-                         Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                         startActivity(intent);
-                     }
+    /**
+     * Represents an asynchronous login/registration task used to authenticate
+     * the user.
+     */
 
-                 }
 
-            }
-
-            @Override
-            public void onFailure(Call<LoginPojo> call, Throwable t) {
-
-            }
-        });
-    }
 }
 
