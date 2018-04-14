@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.hkadirdemircan.otogalarim.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/sliderLayout"
+        android:orientation="vertical"
+        android:layout_height="200dp">
+        <android.support.v4.view.ViewPager
+            android:layout_width="match_parent"
+            android:background="#F2F1EF"
+            android:layout_height="match_parent">
+
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/sliderLayout"
+        android:id="@+id/menu"
+        android:background="#3498db"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/satilikButon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:drawableTop="@drawable/caricon"
+                android:background="@drawable/menu_buton_back"
+                android:paddingBottom="10dp"
+                android:text="Satılık İlanlar"
+                android:textColor="#0F3057"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/kiralikButon"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:drawableTop="@drawable/rentacaricon"
+                android:paddingBottom="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_buton_back"
+                android:textColor="#0F3057"
+                android:textStyle="bold"
+                android:text="Kiralık İlanlar"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/iletisimButon"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_buton_back"
+                android:drawableTop="@drawable/contacticon"
+                android:textColor="#0F3057"
+                android:textStyle="bold"
+                android:text="iletisim" />
+
+            <Button
+                android:id="@+id/duyuruButon"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:drawableTop="@drawable/duyuruicon"
+                android:paddingBottom="10dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/menu_buton_back"
+                android:textColor="#0F3057"
+                android:textStyle="bold"
+                android:text="duyuru"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
