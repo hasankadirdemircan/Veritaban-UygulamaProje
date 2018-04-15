@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
-import android.content.Intent;
 import android.content.Loader;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -28,22 +27,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
-import com.hkadirdemircan.otogalarim.RestApi.ManagerAll;
-
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
-public class RegisterActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class DogrulamaActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -60,18 +52,20 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
- //   private UserLoginTask mAuthTask = null;
+
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    String dogrulamaKodu;
+    String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_dogrulama);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -87,6 +81,12 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
                 return false;
             }
         });
+
+        Bundle bundle = getIntent().getExtras();
+        dogrulamaKodu =String.valueOf( bundle.getInt("kod"));
+        email = bundle.getString("email");
+        Toast.makeText(getApplicationContext(),dogrulamaKodu,Toast.LENGTH_LONG).show();
+        mEmailView.setText(email);
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
@@ -150,6 +150,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * errors are presented and no actual login attempt is made.
      */
     private void attemptLogin() {
+
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
@@ -187,7 +188,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            register(email,password);
 
         }
     }
@@ -275,7 +275,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(RegisterActivity.this,
+                new ArrayAdapter<>(DogrulamaActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -296,32 +296,5 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    public void register(String ad, String sifre)
-    {
-        Call<RegisterPojo> request = ManagerAll.getInstance().register(ad,sifre);
-        request.enqueue(new Callback<RegisterPojo>() {
-            @Override
-            public void onResponse(Call<RegisterPojo> call, Response<RegisterPojo> response) {
-                showProgress(false);
-                String email = mEmailView.getText().toString();
-                if(response.body().isTf()) {
-                    Intent intent = new Intent(RegisterActivity.this, DogrulamaActivity.class);
-                    intent.putExtra("email", email);
-                    intent.putExtra("kod", response.body().getDogrulamaKodu());
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(getApplicationContext(),response.body().getResult(),Toast.LENGTH_LONG).show();
-                }
-
-
-            }
-
-            @Override
-            public void onFailure(Call<RegisterPojo> call, Throwable t) {
-
-            }
-        });
-    }
-
 }
 

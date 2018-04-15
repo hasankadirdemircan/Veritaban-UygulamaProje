@@ -20,4 +20,5 @@
         completions."
     </string>
     <string name="title_activity_register">Sign in</string>
+    <string name="title_activity_dogrulama">Sign in</string>
 </resources>
