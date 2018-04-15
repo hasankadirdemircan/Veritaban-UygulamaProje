@@ -1,6 +1,7 @@
 package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
+import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -15,4 +16,8 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/login.php")
     Call<LoginPojo> control(@Field("kad") String ad, @Field("soyad") String soyad);
+
+    @FormUrlEncoded
+    @POST("/register.php")
+    Call<RegisterPojo> kayitol(@Field("kadi") String ad, @Field("sifre") String soyad);
 }

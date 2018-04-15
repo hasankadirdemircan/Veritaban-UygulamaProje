@@ -1,31 +1,31 @@
 package com.hkadirdemircan.otogalarim.Models;
 
 public class LoginPojo{
-	private Object kadi;
-	private Object id;
+    private Object kadi;
+    private Object id;
 
-	public void setKadi(Object kadi){
-		this.kadi = kadi;
-	}
+    public void setKadi(Object kadi){
+        this.kadi = kadi;
+    }
 
-	public Object getKadi(){
-		return kadi;
-	}
+    public Object getKadi(){
+        return kadi;
+    }
 
-	public void setId(Object id){
-		this.id = id;
-	}
+    public void setId(Object id){
+        this.id = id;
+    }
 
-	public Object getId(){
-		return id;
-	}
+    public Object getId(){
+        return id;
+    }
 
-	@Override
- 	public String toString(){
-		return 
-			"LoginPojo{" + 
-			"kadi = '" + kadi + '\'' + 
-			",id = '" + id + '\'' + 
-			"}";
-		}
+    @Override
+    public String toString(){
+        return
+                "LoginPojo{" +
+                        "kadi = '" + kadi + '\'' +
+                        ",id = '" + id + '\'' +
+                        "}";
+    }
 }

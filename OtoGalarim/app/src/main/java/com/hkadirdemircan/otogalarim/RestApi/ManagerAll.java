@@ -1,6 +1,7 @@
 package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
+import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 
 import retrofit2.Call;
 
@@ -17,6 +18,13 @@ public class ManagerAll extends BaseManager {
     public Call<LoginPojo> login(String ad , String soyad){
 
         Call<LoginPojo> x = getRestApi().control(ad, soyad);
+
+        return x;
+    }
+
+    public Call<RegisterPojo> register(String ad , String soyad){
+
+        Call<RegisterPojo> x = getRestApi().kayitol(ad, soyad);
 
         return x;
     }

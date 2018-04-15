@@ -25,9 +25,17 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
+import com.hkadirdemircan.otogalarim.RestApi.ManagerAll;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -177,7 +185,8 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-          // showProgress(true);
+            showProgress(true);
+            register(email,password);
 
         }
     }
@@ -286,7 +295,23 @@ public class RegisterActivity extends AppCompatActivity implements LoaderCallbac
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+    public void register(String ad, String sifre)
+    {
+        Call<RegisterPojo> request = ManagerAll.getInstance().register(ad,sifre);
+        request.enqueue(new Callback<RegisterPojo>() {
+            @Override
+            public void onResponse(Call<RegisterPojo> call, Response<RegisterPojo> response) {
+                showProgress(false);
+                Toast.makeText(getApplicationContext(),response.body().getResult(), Toast.LENGTH_LONG).show();
 
+            }
+
+            @Override
+            public void onFailure(Call<RegisterPojo> call, Throwable t) {
+
+            }
+        });
+    }
 
 }
 
