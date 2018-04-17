@@ -5,7 +5,9 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
+import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
@@ -27,8 +29,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
+import com.hkadirdemircan.otogalarim.RestApi.ManagerAll;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -61,6 +70,7 @@ public class DogrulamaActivity extends AppCompatActivity implements LoaderCallba
     private View mLoginFormView;
     String dogrulamaKodu;
     String email;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,13 +167,13 @@ public class DogrulamaActivity extends AppCompatActivity implements LoaderCallba
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
-        String password = mPasswordView.getText().toString();
+        String kod = mPasswordView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(kod) && !isPasswordValid(kod)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -187,7 +197,8 @@ public class DogrulamaActivity extends AppCompatActivity implements LoaderCallba
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
+           // showProgress(true);
+            dogrula(email,kod);
 
         }
     }
@@ -199,7 +210,7 @@ public class DogrulamaActivity extends AppCompatActivity implements LoaderCallba
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() > 0;
     }
 
     /**
@@ -292,6 +303,36 @@ public class DogrulamaActivity extends AppCompatActivity implements LoaderCallba
         int IS_PRIMARY = 1;
     }
 
+    public void dogrula(String ad, String kod)
+    {
+        final Call<DogrulamaPojo> request = ManagerAll.getInstance().dogrula(ad,kod);
+        request.enqueue(new Callback<DogrulamaPojo>() {
+            @Override
+            public void onResponse(Call<DogrulamaPojo> call, Response<DogrulamaPojo> response) {
+                if(response.body().isTf()){
+                    String uye_id = response.body().getId().toString();
+                    String kullaniciAdi = response.body().getKadi().toString();
+
+                    sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("uye_id", uye_id);
+                    editor.putString("uye_KullaniciAdi", kullaniciAdi);
+                    editor.commit();
+                    Intent ıntent = new Intent(DogrulamaActivity.this,MainActivity.class);
+                    startActivity(ıntent);
+
+                }else
+                {
+                    Toast.makeText(getApplicationContext(),response.body().getResult(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DogrulamaPojo> call, Throwable t) {
+
+            }
+        });
+    }
     /**
      * Represents an asynchronous login/registration task used to authenticate
      * the user.

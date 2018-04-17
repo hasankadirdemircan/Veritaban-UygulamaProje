@@ -1,5 +1,7 @@
 package com.hkadirdemircan.otogalarim.RestApi;
 
+
+import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 
@@ -15,16 +17,23 @@ public class ManagerAll extends BaseManager {
 
     public static synchronized ManagerAll getInstance(){ return ourInstance; }
 
-    public Call<LoginPojo> login(String ad , String soyad){
+    public Call<LoginPojo> login(String ad , String sifre){
 
-        Call<LoginPojo> x = getRestApi().control(ad, soyad);
+        Call<LoginPojo> x = getRestApi().control(ad, sifre);
 
         return x;
     }
 
-    public Call<RegisterPojo> register(String ad , String soyad){
+    public Call<RegisterPojo> register(String ad , String sifre){
 
-        Call<RegisterPojo> x = getRestApi().kayitol(ad, soyad);
+        Call<RegisterPojo> x = getRestApi().kayitol(ad, sifre);
+
+        return x;
+    }
+
+    public Call<DogrulamaPojo> dogrula(String ad , String kod){
+
+        Call<DogrulamaPojo> x = getRestApi().dogrulama(ad, kod);
 
         return x;
     }
