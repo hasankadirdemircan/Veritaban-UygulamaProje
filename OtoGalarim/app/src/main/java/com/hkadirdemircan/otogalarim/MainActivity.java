@@ -1,5 +1,6 @@
 package com.hkadirdemircan.otogalarim;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity
     SharedPreferences sharedPreferences;
     String navHeaderText;
     TextView navHeaderTextView;
+    SharedPreferences.Editor editor; //cikis yapma islemi icin.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +93,13 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.cikisYap) {
+
+            editor = sharedPreferences.edit();
+            editor.clear(); // verileri shared'dan siliyoruz.
+            editor.commit();//cikis yapma islemi tamamlandi.
+            Intent ıntent = new Intent(MainActivity.this, LoginActivity.class);//login ekranina donmesi icin.
+            startActivity(ıntent);
 
         }
 
