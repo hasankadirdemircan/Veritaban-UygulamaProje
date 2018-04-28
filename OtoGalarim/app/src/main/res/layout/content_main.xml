@@ -35,30 +35,41 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/satilikButon"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
+                android:padding="5dp"
                 android:drawableTop="@drawable/caricon"
                 android:background="@drawable/menu_buton_back"
                 android:paddingBottom="10dp"
-                android:text="Satılık İlanlar"
+                android:text="İlanlar"
                 android:textColor="#0F3057"
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/kiralikButon"
-                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:drawableTop="@drawable/rentacaricon"
-                android:paddingBottom="10dp"
+                android:layout_height="match_parent"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:background="@drawable/menu_buton_back"
+                android:drawableTop="@drawable/listicon"
+                android:padding="5dp"
+                android:text="İlan Ver"
                 android:textColor="#0F3057"
-                android:textStyle="bold"
-                android:text="Kiralık İlanlar"
-                android:layout_height="wrap_content"/>
+                android:textStyle="bold" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/menu_buton_back"
+                android:drawableTop="@drawable/favoriteadicon"
+                android:padding="5dp"
+                android:text="Favori İlan"
+                android:textColor="#0F3057"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:layout_weight="1"
@@ -67,31 +78,44 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/iletisimButon"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/menu_buton_back"
                 android:drawableTop="@drawable/contacticon"
                 android:textColor="#0F3057"
                 android:textStyle="bold"
-                android:text="iletisim" />
+                android:text="İletişim Bilgileri" />
 
             <Button
-                android:id="@+id/duyuruButon"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:drawableTop="@drawable/duyuruicon"
-                android:paddingBottom="10dp"
+                android:layout_height="match_parent"
+                android:padding="5dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/menu_buton_back"
+                android:drawableTop="@drawable/messageicon"
                 android:textColor="#0F3057"
                 android:textStyle="bold"
-                android:text="duyuru"
-                android:layout_height="wrap_content"/>
+                android:text="Mesajlarım" />
+
+            <Button
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/menu_buton_back"
+                android:drawableTop="@drawable/myadlist"
+                android:padding="5dp"
+                android:text="İlanlarım"
+                android:textColor="#0F3057"
+                android:textStyle="bold" />
         </LinearLayout>
+
+
     </LinearLayout>
 
 </RelativeLayout>
