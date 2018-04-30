@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F7BC05"
+    tools:context=".AdresBilgileri">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="15dp"
+        android:textColor="#203040"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Adres Bilgilerini Giriniz"/>
+    <EditText
+        android:id="@+id/sehirBilgiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Şehir Bilgisini Giriniz"/>
+    <EditText
+        android:id="@+id/ilceBilgiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="İlçe Bilgisini Giriniz"/>
+    <EditText
+        android:id="@+id/mahalleBilgiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Mahalle Bilgisini Giriniz"/>
+    <Button
+        android:id="@+id/adresBilgisiButon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/menu_buton_back"
+        android:text="İleri"/>
+</LinearLayout>
