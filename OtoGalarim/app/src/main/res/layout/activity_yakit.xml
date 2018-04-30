@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F7BC05"
-    tools:context=".IlanTuru">
+    tools:context=".Yakit">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,24 +17,32 @@
         android:textColor="#203040"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="İlan Türü Bilgilerini Giriniz"/>
+        android:text="Yakıt Tüketim Bilgilerini Giriniz"/>
 
-    <Spinner
-        android:id="@+id/ilanturuSpinner"
+    <EditText
+        android:id="@+id/yakitTipiBilgiEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Yakıt Tipini Giriniz"/>
 
-    </Spinner>
-
-    <Spinner
-        android:id="@+id/kimdenSpinner"
+    <EditText
+        android:id="@+id/ortalamaYakitBilgiEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Ortalama Yakıt Bilgisini Giriniz"/>
 
-    </Spinner>
+    <EditText
+        android:id="@+id/depoHacmiBilgiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Depo Hacmini Giriniz"/>
+
 
     <Button
-        android:id="@+id/ilanTuruButton"
+        android:id="@+id/yakitTuketimBilgisiButon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -42,4 +50,5 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/menu_buton_back"
         android:text="İleri"/>
+
 </LinearLayout>

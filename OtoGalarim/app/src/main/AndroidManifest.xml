@@ -34,7 +34,10 @@
             android:label="@string/title_activity_dogrulama" />
         <activity android:name=".AdresBilgileri" />
         <activity android:name=".AracBilgileri" />
-        <activity android:name=".IlanTuru"></activity>
+        <activity android:name=".IlanTuru" />
+        <activity android:name=".MotorPerformans" />
+        <activity android:name=".Yakit" />
+        <activity android:name=".IlanResimler"></activity>
     </application>
 
 </manifest>

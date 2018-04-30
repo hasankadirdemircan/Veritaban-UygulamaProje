@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F7BC05"
-    tools:context=".IlanTuru">
+    tools:context=".MotorPerformans">
 
     <TextView
         android:layout_width="match_parent"
@@ -17,24 +17,31 @@
         android:textColor="#203040"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="İlan Türü Bilgilerini Giriniz"/>
+        android:text="Motor ve Performans Bilgilerini Giriniz"/>
 
-    <Spinner
-        android:id="@+id/ilanturuSpinner"
+    <EditText
+        android:id="@+id/motorTipiBilgiEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Motor Tipini Giriniz"/>
 
-    </Spinner>
-
-    <Spinner
-        android:id="@+id/kimdenSpinner"
+    <EditText
+        android:id="@+id/motorHacmiBilgiEditText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Motor Hacmini Giriniz"/>
 
-    </Spinner>
+    <EditText
+        android:id="@+id/azamiSuratBilgiEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Azami Sürat Giriniz"/>
 
     <Button
-        android:id="@+id/ilanTuruButton"
+        android:id="@+id/motorBilgisiButon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -42,4 +49,7 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/menu_buton_back"
         android:text="İleri"/>
+
+
+
 </LinearLayout>
