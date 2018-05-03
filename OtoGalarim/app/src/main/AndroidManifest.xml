@@ -37,7 +37,8 @@
         <activity android:name=".IlanTuru" />
         <activity android:name=".MotorPerformans" />
         <activity android:name=".Yakit" />
-        <activity android:name=".IlanResimler"></activity>
+        <activity android:name=".IlanResimler" />
+        <activity android:name=".IlanBilgileri"></activity>
     </application>
 
 </manifest>

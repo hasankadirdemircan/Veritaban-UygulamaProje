@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#F7BC05"
-    tools:context=".AracBilgileri">
-
+    tools:context=".IlanBilgileri">
 
     <TextView
         android:layout_width="match_parent"
@@ -18,41 +17,23 @@
         android:textColor="#203040"
         android:textStyle="bold"
         android:gravity="center"
-        android:text="Araç Bilgilerini Giriniz"/>
-    <EditText
-        android:id="@+id/markaBilgiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#203040"
-        android:hint="Araç Marka Giriniz"/>
-    <EditText
-        android:id="@+id/seriBilgiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#203040"
-        android:hint="Araç Seri Giriniz"/>
-    <EditText
-        android:id="@+id/modelBilgiEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColorHint="#203040"
-        android:hint="Araç Model Giriniz"/>
+        android:text="İlan Bilgilerini Giriniz"/>
 
     <EditText
-        android:id="@+id/yilBilgiEditText"
+        android:id="@+id/ilanBaslikEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#203040"
-        android:hint="Araç Yılını Giriniz"/>
+        android:hint="İlan Başlığını Giriniz"/>
     <EditText
-        android:id="@+id/kmBilgiEditText"
+        android:id="@+id/ilanAciklamaEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="#203040"
-        android:hint="Araç Kilometresini Giriniz"/>
+        android:hint="İlan Açıklamasını Giriniz"/>
 
     <Button
-        android:id="@+id/aracBilgisiButon"
+        android:id="@+id/ilanBilgisiButon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
@@ -60,4 +41,6 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/menu_buton_back"
         android:text="İleri"/>
+
+
 </LinearLayout>
