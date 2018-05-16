@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity
     String navHeaderText;
     TextView navHeaderTextView;
     SharedPreferences.Editor editor; //cikis yapma islemi icin.
+    Button ilanVerButton; //ilan ver aktivitesi icin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +45,24 @@ public class MainActivity extends AppCompatActivity
         View headerView = navigationView.getHeaderView(0);
         navHeaderTextView = (TextView) headerView.findViewById(R.id.navHeaderText);
         navHeaderTextView.setText(navHeaderText);
+        tanimla(); //ilanver acticvty cagirilmasi icin.
     }
 
+    /**
+     * ilanver activity tanimlama islemi
+     * ilanver butonuna tiklayinca IlanBilgileri activity acilir.
+     */
+    public void tanimla (){
+        ilanVerButton = (Button) findViewById(R.id.ilanVerButon);
+        ilanVerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent  = new Intent(MainActivity.this, IlanBilgileri.class);
+                startActivity(ıntent);
+            }
+        });
+
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
