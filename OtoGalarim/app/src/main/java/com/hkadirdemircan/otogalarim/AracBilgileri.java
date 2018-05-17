@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class AracBilgileri extends AppCompatActivity {
 
-    Button aracBilgisiButon;
+    Button aracBilgisiButon,aracBilgisiButonGeri;
     EditText markaBilgiEditText, seriBilgiEditText, modelBilgiEditText, yilBilgiEditText, kmBilgiEditText;
 
     @Override
@@ -33,6 +33,18 @@ public class AracBilgileri extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ıntent = new Intent(AracBilgileri.this, MotorPerformans.class);
                 startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+            }
+        });
+
+        aracBilgisiButonGeri = (Button)findViewById(R.id.aracBilgisiButonGeri);
+        aracBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent = new Intent(AracBilgileri.this, AdresBilgileri.class);
+                startActivity(ıntent);
+                //activity gecisine anim ekledik.
+                overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
             }
         });
     }

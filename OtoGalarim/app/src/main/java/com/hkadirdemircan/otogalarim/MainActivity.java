@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent ıntent  = new Intent(MainActivity.this, IlanBilgileri.class);
                 startActivity(ıntent);
+                //activity acilis kapanis a anim ekledik onu kullaniyoruz.
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
             }
         });
 

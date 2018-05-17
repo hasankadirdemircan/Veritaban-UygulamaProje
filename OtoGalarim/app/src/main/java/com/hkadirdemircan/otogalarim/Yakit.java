@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class Yakit extends AppCompatActivity {
 
-    Button yakitTuketimBilgisiButon;
+    Button yakitTuketimBilgisiButon,yakitTuketimBilgisiButonGeri;
     EditText yakitTipiBilgiEditText, ortalamaYakitBilgiEditText, depoHacmiBilgiEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,18 @@ public class Yakit extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ıntent = new Intent(Yakit.this,IlanResimler.class);
                 startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
             }
         });
 
+        yakitTuketimBilgisiButonGeri = (Button)findViewById(R.id.yakitTuketimBilgisiButonGeri);
+        yakitTuketimBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent = new Intent(Yakit.this,MotorPerformans.class);
+                startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in_reverse, R.anim.anim_out_reverse);
+            }
+        });
     }
 }

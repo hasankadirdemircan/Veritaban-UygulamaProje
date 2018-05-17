@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class IlanBilgileri extends AppCompatActivity {
 
-    Button ilanBilgisiButon;
+    Button ilanBilgisiButon,ilanBilgisiButonGeri;
     EditText ilanBaslikEditText,ilanAciklamaEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,26 @@ public class IlanBilgileri extends AppCompatActivity {
         ilanAciklamaEditText = (EditText)findViewById(R.id.ilanAciklamaEditText);
         ilanBaslikEditText = (EditText)findViewById(R.id.ilanBaslikEditText);
         ilanBilgisiButon = (Button)findViewById(R.id.ilanBilgisiButon);
+        ilanBilgisiButonGeri = (Button)findViewById(R.id.ilanBilgisiButonGeri);
+
         //butona tiklayinca diger activity acilacak.
         ilanBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent ıntent = new Intent(IlanBilgileri.this,AdresBilgileri.class);
                 startActivity(ıntent);
+                //activity giris cikis anim ekledik.
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+
+            }
+        });
+
+        ilanBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent = new Intent(IlanBilgileri.this,MainActivity.class);
+                startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
             }
         });
     }

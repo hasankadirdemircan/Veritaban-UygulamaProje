@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class MotorPerformans extends AppCompatActivity {
 
-    Button motorBilgisiButon;
+    Button motorBilgisiButon,motorBilgisiButonGeri;
     EditText motorTipiBilgiEditText, motorHacmiBilgiEditText, azamiSuratBilgiEditText;
 
     @Override
@@ -31,6 +31,17 @@ public class MotorPerformans extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ıntent = new Intent(MotorPerformans.this,Yakit.class);
                 startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+            }
+        });
+
+        motorBilgisiButonGeri = (Button)findViewById(R.id.motorBilgisiButonGeri);
+        motorBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent = new Intent(MotorPerformans.this,AracBilgileri.class);
+                startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
             }
         });
     }

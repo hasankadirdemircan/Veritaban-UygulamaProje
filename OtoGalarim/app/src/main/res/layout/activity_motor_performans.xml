@@ -41,14 +41,24 @@
         android:hint="Azami Sürat Giriniz"/>
 
     <Button
-        android:id="@+id/motorBilgisiButon"
+    android:id="@+id/motorBilgisiButon"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="60dp"
+    android:layout_marginRight="60dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/menu_buton_back"
+    android:text="İleri"/>
+
+    <Button
+        android:id="@+id/motorBilgisiButonGeri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/menu_buton_back"
-        android:text="İleri"/>
+        android:text="Geri"/>
 
 
 

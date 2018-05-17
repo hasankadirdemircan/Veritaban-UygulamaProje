@@ -9,7 +9,7 @@ import android.widget.EditText;
 
 public class AdresBilgileri extends AppCompatActivity {
 
-    Button adresBilgisiButon;
+    Button adresBilgisiButon,adresBilgisiButonGeri;
     EditText sehirBilgiEditText,ilceBilgiEditText,mahalleBilgiEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,17 @@ public class AdresBilgileri extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ıntent = new Intent(AdresBilgileri.this, AracBilgileri.class);
                 startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+            }
+        });
+
+        adresBilgisiButonGeri = (Button)findViewById(R.id.adresBilgisiButonGeri);
+        adresBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent = new Intent(AdresBilgileri.this,IlanBilgileri.class);
+                startActivity(ıntent);
+                overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
             }
         });
     }
