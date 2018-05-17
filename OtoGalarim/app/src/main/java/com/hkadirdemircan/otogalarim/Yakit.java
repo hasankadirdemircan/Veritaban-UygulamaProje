@@ -31,6 +31,7 @@ public class Yakit extends AppCompatActivity {
                 Intent ıntent = new Intent(Yakit.this,IlanResimler.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                finish();
             }
         });
 
@@ -40,7 +41,9 @@ public class Yakit extends AppCompatActivity {
             public void onClick(View view) {
                 Intent ıntent = new Intent(Yakit.this,MotorPerformans.class);
                 startActivity(ıntent);
+                //geri tusuna bastiginda slayt icin.
                 overridePendingTransition(R.anim.anim_in_reverse, R.anim.anim_out_reverse);
+                finish();
             }
         });
     }

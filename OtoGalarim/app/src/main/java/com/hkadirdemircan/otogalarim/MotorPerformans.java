@@ -32,6 +32,7 @@ public class MotorPerformans extends AppCompatActivity {
                 Intent ıntent = new Intent(MotorPerformans.this,Yakit.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                finish();
             }
         });
 
@@ -42,6 +43,7 @@ public class MotorPerformans extends AppCompatActivity {
                 Intent ıntent = new Intent(MotorPerformans.this,AracBilgileri.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
+                finish();
             }
         });
     }

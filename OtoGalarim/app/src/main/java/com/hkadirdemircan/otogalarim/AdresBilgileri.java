@@ -31,6 +31,8 @@ public class AdresBilgileri extends AppCompatActivity {
                 Intent ıntent = new Intent(AdresBilgileri.this, AracBilgileri.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                //ileri tusuna basinca bu activty arkada calismasin bitsin diye.
+                finish();
             }
         });
 
@@ -41,6 +43,8 @@ public class AdresBilgileri extends AppCompatActivity {
                 Intent ıntent = new Intent(AdresBilgileri.this,IlanBilgileri.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
+                //geri tusuna bastiginda bulundugu activity arkada durmasin.
+                finish();
             }
         });
     }

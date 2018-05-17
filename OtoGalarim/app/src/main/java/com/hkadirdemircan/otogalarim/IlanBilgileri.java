@@ -29,10 +29,11 @@ public class IlanBilgileri extends AppCompatActivity {
         ilanBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ıntent = new Intent(IlanBilgileri.this,AdresBilgileri.class);
+                Intent ıntent = new Intent(IlanBilgileri.this,IlanTuru.class);
                 startActivity(ıntent);
                 //activity giris cikis anim ekledik.
                 overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                finish();
 
             }
         });
@@ -43,6 +44,7 @@ public class IlanBilgileri extends AppCompatActivity {
                 Intent ıntent = new Intent(IlanBilgileri.this,MainActivity.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
+                finish();
             }
         });
     }
