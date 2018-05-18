@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.hkadirdemircan.otogalarim.Models.IlanVerPojo;
 
 public class IlanBilgileri extends AppCompatActivity {
 
@@ -25,15 +28,31 @@ public class IlanBilgileri extends AppCompatActivity {
         ilanBilgisiButon = (Button)findViewById(R.id.ilanBilgisiButon);
         ilanBilgisiButonGeri = (Button)findViewById(R.id.ilanBilgisiButonGeri);
 
+        //kullanici ileri deyip geri geldiginde girdigi bilgiler kaybolmasin diye.
+        ilanAciklamaEditText.setText(IlanVerPojo.getAciklama());
+        ilanBaslikEditText.setText(IlanVerPojo.getBaslik());
+
         //butona tiklayinca diger activity acilacak.
         ilanBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ıntent = new Intent(IlanBilgileri.this,IlanTuru.class);
-                startActivity(ıntent);
-                //activity giris cikis anim ekledik.
-                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
-                finish();
+                //Eger aciklamalari doldurmadiysa hint'i doludur ve bir sonraki activity'e gecemesin diye if.
+                if(ilanAciklamaEditText.getHint() ==" " && ilanBaslikEditText.getHint() == "") {
+
+                    //kullanici ileri deyip geri geldiginde girdigi bilgiler kaybolmasin diye.
+                    //girilen bilgileri set ediyoruz..
+                    IlanVerPojo.setAciklama(ilanAciklamaEditText.getText().toString());
+                    IlanVerPojo.setBaslik(ilanBaslikEditText.getText().toString());
+
+                    Intent ıntent = new Intent(IlanBilgileri.this, IlanTuru.class);
+                    startActivity(ıntent);
+                    //activity giris cikis anim ekledik.
+                    overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+                    finish();
+                }else
+                {
+                    Toast.makeText(getApplicationContext(),"Tüm Bilgileri Eksiksiz Giriniz.",Toast.LENGTH_LONG).show();
+                }
 
             }
         });
