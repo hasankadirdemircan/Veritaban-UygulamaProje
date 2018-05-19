@@ -20,6 +20,15 @@ public class IlanVerPojo {
     static String  yakittipi;
     static String  ortalamayakit;
     static String depohacmi;
+    static String km;
+
+    public static String getKm() {
+        return km;
+    }
+
+    public static void setKm(String km) {
+        IlanVerPojo.km = km;
+    }
 
     public static String getUye_id() {
         return uye_id;
