@@ -25,6 +25,8 @@ public class AdresBilgileri extends AppCompatActivity {
         ilceBilgiEditText = (EditText)findViewById(R.id.ilceBilgiEditText);
         mahalleBilgiEditText = (EditText)findViewById(R.id.mahalleBilgiEditText);
 
+
+
         adresBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,7 +42,7 @@ public class AdresBilgileri extends AppCompatActivity {
         adresBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ıntent = new Intent(AdresBilgileri.this,IlanBilgileri.class);
+                Intent ıntent = new Intent(AdresBilgileri.this,IlanTuru.class);
                 startActivity(ıntent);
                 overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
                 //geri tusuna bastiginda bulundugu activity arkada durmasin.

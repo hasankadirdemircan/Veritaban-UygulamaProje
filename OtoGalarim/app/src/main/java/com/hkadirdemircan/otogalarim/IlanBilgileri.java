@@ -36,14 +36,15 @@ public class IlanBilgileri extends AppCompatActivity {
         ilanBilgisiButon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Eger aciklamalari doldurmadiysa hint'i doludur ve bir sonraki activity'e gecemesin diye if.
-                if(ilanAciklamaEditText.getHint() ==" " && ilanBaslikEditText.getHint() == "") {
+
+                //Eger aciklamalari doldurmadiysa text alanları bostur ve bir sonraki activity'e gecemesin diye if.
+                if(!ilanAciklamaEditText.getText().toString().equals("") && !ilanBaslikEditText.getText().toString().equals("")) {
 
                     //kullanici ileri deyip geri geldiginde girdigi bilgiler kaybolmasin diye.
                     //girilen bilgileri set ediyoruz..
                     IlanVerPojo.setAciklama(ilanAciklamaEditText.getText().toString());
                     IlanVerPojo.setBaslik(ilanBaslikEditText.getText().toString());
-
+                    //IlanTuru classina gec
                     Intent ıntent = new Intent(IlanBilgileri.this, IlanTuru.class);
                     startActivity(ıntent);
                     //activity giris cikis anim ekledik.
