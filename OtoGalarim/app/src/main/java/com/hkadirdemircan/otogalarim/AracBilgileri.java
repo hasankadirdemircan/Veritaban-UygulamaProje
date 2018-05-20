@@ -23,7 +23,7 @@ public class AracBilgileri extends AppCompatActivity {
     }
 
     public void tanimla() {
-        markaBilgiEditText = (EditText) findViewById(R.id.mahalleBilgiEditText);
+        markaBilgiEditText = (EditText) findViewById(R.id.markaBilgiEditText);
         seriBilgiEditText = (EditText) findViewById(R.id.seriBilgiEditText);
         modelBilgiEditText = (EditText) findViewById(R.id.modelBilgiEditText);
         yilBilgiEditText = (EditText) findViewById(R.id.yilBilgiEditText);
@@ -70,7 +70,7 @@ public class AracBilgileri extends AppCompatActivity {
         aracBilgisiButonGeri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent ıntent = new Intent(AracBilgileri.this, IlanTuru.class);
+                Intent ıntent = new Intent(AracBilgileri.this, AdresBilgileri.class);
                 startActivity(ıntent);
                 //activity gecisine anim ekledik.
                 overridePendingTransition(R.anim.anim_in_reverse,R.anim.anim_out_reverse);
