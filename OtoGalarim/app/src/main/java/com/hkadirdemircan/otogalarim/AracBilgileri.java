@@ -27,7 +27,7 @@ public class AracBilgileri extends AppCompatActivity {
         seriBilgiEditText = (EditText) findViewById(R.id.seriBilgiEditText);
         modelBilgiEditText = (EditText) findViewById(R.id.modelBilgiEditText);
         yilBilgiEditText = (EditText) findViewById(R.id.yilBilgiEditText);
-        kmBilgiEditText = (EditText) findViewById(R.id.kmBilgiEditText);
+            kmBilgiEditText = (EditText) findViewById(R.id.kmBilgiEditText);
 
         aracBilgisiButon = (Button) findViewById(R.id.aracBilgisiButon);
 

@@ -2,6 +2,7 @@ package com.hkadirdemircan.otogalarim.RestApi;
 
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 
@@ -38,4 +39,17 @@ public class ManagerAll extends BaseManager {
         return x;
     }
 
+
+    public Call<IlanSonucPojo> ilanVer(String uye_id, String sehir, String ilce, String mahalle,
+                                       String marka, String seri, String model, String yil,
+                                       String ilantipi, String kimden, String baslik, String aciklama,
+                                       String motortipi, String motorhacmi, String surat, String yakittipi,
+                                       String ortalamayakit, String depohacmi, String km ){
+
+        Call<IlanSonucPojo> x = getRestApi().ilanVer(uye_id, sehir,ilce, mahalle, marka, seri,
+                                                     model, yil, ilantipi, kimden, baslik, aciklama,
+                                                     motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km);
+
+        return x;
+    }
 }

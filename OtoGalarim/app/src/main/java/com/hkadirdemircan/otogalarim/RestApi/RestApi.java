@@ -1,6 +1,7 @@
 package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 
@@ -25,4 +26,13 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/dogrulama.php")
     Call<DogrulamaPojo> dogrulama(@Field("kadi") String ad, @Field("kod") String kod);
+
+    //post istegi atacagimiz url ve parametreler .
+    @FormUrlEncoded
+    @POST("/ilanver.php")
+    Call<IlanSonucPojo> ilanVer(@Field("uye_id") String uye_id, @Field("sehir") String sehir, @Field("ilce") String ilce, @Field("mahalle") String mahalle,
+                                @Field("marka") String marka, @Field("seri") String seri, @Field("model") String model, @Field("yil") String yil,
+                                @Field("ilantipi") String ilantipi, @Field("kimden") String kimden, @Field("baslik") String baslik, @Field("aciklama") String aciklama,
+                                @Field("motortipi") String motortipi, @Field("motorhacmi") String motorhacmi, @Field("surat") String surat, @Field("yakittipi") String yakittipi,
+                                @Field("ortalamayakit") String ortalamayakit, @Field("depohacmi") String depohacmi, @Field("km") String km);
 }
