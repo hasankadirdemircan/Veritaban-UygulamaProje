@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
+        sharedPreferences = getApplicationContext().getSharedPreferences("session",0);
         navHeaderText = sharedPreferences.getString("uye_KullaniciAdi",null);
 
 

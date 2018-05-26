@@ -8,6 +8,24 @@
     android:background="#F7BC05"
     tools:context=".Yakit">
 
+
+    <ProgressBar
+        android:id="@+id/login_progressYakit"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/yakit_view"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,4 +79,6 @@
         android:background="@drawable/menu_buton_back"
         android:text="Geri"/>
 
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

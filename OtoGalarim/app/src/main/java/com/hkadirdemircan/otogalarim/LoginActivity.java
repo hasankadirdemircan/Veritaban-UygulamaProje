@@ -75,7 +75,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
+        //ilk giris yapinca web servise istek attiginda
+        //bilgiler sharedPreferences yardimi ile "session" adinda tutulur ve
+        //kullanici uygulamaya tekrar tikladiginda bu kontrol calisir ve tekrar sifre istemez.
+        sharedPreferences = getApplicationContext().getSharedPreferences("session",0);
         if(sharedPreferences.getString("uye_id",null) != null && sharedPreferences.getString("uye_KullaniciAdi",null) != null )
         {
             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
@@ -328,7 +331,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                      {
                          String uyeId = response.body().getId().toString();
                          String kullaniciAdi = response.body().getKadi().toString();
-                         sharedPreferences = getApplicationContext().getSharedPreferences("giris", 0);//giris yapmis olanı birdaha sifre girmesin
+                         sharedPreferences = getApplicationContext().getSharedPreferences("session", 0);//giris yapmis olanı birdaha sifre girmesin
                          SharedPreferences.Editor editor = sharedPreferences.edit();
                          editor.putString("uye_id", uyeId);
                          editor.putString("uye_KullaniciAdi",kullaniciAdi);
