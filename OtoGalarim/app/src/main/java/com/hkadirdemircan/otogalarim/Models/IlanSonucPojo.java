@@ -2,8 +2,8 @@ package com.hkadirdemircan.otogalarim.Models;
 
 public class IlanSonucPojo{
 	private boolean tf;
-	private int uyeId;
-	private String ilanId;
+	private int uyeid;
+	private int ilanid;
 
 	public void setTf(boolean tf){
 		this.tf = tf;
@@ -13,30 +13,29 @@ public class IlanSonucPojo{
 		return tf;
 	}
 
-
-	public int getUyeId() {
-		return uyeId;
+	public int getUyeid() {
+		return uyeid;
 	}
 
-	public void setUyeId(int uyeId) {
-		this.uyeId = uyeId;
+	public void setUyeid(int uyeid) {
+		this.uyeid = uyeid;
 	}
 
-	public void setIlanId(String ilanId){
-		this.ilanId = ilanId;
+	public int getIlanid() {
+		return ilanid;
 	}
 
-	public String getIlanId(){
-		return ilanId;
+	public void setIlanid(int ilanid) {
+		this.ilanid = ilanid;
 	}
 
 	@Override
- 	public String toString(){
-		return 
-			"IlanSonucPojo{" + 
-			"tf = '" + tf + '\'' + 
-			",uye_id = '" + uyeId + '\'' + 
-			",ilan_id = '" + ilanId + '\'' + 
-			"}";
-		}
+	public String toString(){
+		return
+				"Response{" +
+						"tf = '" + tf + '\'' +
+						",uyeid = '" + uyeid + '\'' +
+						",ilanid = '" + ilanid + '\'' +
+						"}";
+	}
 }

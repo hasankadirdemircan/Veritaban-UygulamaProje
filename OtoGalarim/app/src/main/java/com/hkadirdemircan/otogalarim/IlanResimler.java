@@ -24,7 +24,7 @@ import retrofit2.Response;
 
 public class IlanResimler extends AppCompatActivity {
 
-    Button resimSecButton, resimEkleButon, cikButon;
+    Button resimSecButon, resimEkleButon, cikButon;
     ImageView secilenIlanResmiImageView;
     Bitmap bitmap;
     String uye_id, ilan_id, image;
@@ -33,34 +33,41 @@ public class IlanResimler extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ilan_resimler);
-        tanimla();
 
         // aktivite arasi gonderilen verileri almak icin kullanilir.
         // Ornek: uye_id, ilan_id
         Bundle bundle = getIntent().getExtras();
         uye_id = String.valueOf(bundle.getInt("uye_id"));
-        ilan_id= bundle.getString("ilan_id");
+        ilan_id= String.valueOf(bundle.getInt("ilan_id"));
+
+
+        tanimla();
+        islem();
     }
 
+    public void islem()
+    {
+        //resim sec butonuna bastıgında galerisi acilmasi icin.
+        resimSecButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                resimGoster();
+            }
+        });
+
+    }
     /**
      * butonlari tanimliyoruz.
      *
      */
     public void tanimla()
     {
-        resimSecButton = (Button) findViewById(R.id.resimSecButon);
+        resimSecButon = (Button) findViewById(R.id.resimSecButon);
         resimEkleButon = (Button) findViewById(R.id.resimEkleButon);
         cikButon = (Button) findViewById(R.id.cikButon);
 
         secilenIlanResmiImageView = (ImageView) findViewById(R.id.secilenIlanResmiImageView);
 
-        //resim sec butonuna bastıgında galerisi acilmasi icin.
-       resimSecButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               resimGoster();
-           }
-       });
 
 
        resimEkleButon.setOnClickListener(new View.OnClickListener() {
@@ -117,24 +124,23 @@ public class IlanResimler extends AppCompatActivity {
      * @param data
      */
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 777 && resultCode == RESULT_OK && data != null)
         {
-            Uri path = data.getData();
+                 Uri path = data.getData();
             try
             {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), path);
                 secilenIlanResmiImageView.setImageBitmap(bitmap);
                 secilenIlanResmiImageView.setVisibility(View.VISIBLE);
-
             }catch(IOException e)
             {
                 e.printStackTrace();
             }
         }
     }
+
 
     /**
      * image base64 decode islemi.

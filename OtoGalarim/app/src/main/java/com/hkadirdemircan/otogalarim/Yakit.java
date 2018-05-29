@@ -43,7 +43,7 @@ public class Yakit extends AppCompatActivity {
         mProgressView = findViewById(R.id.login_progressYakit);
 
         //uye id' yi set ettik
-        sharedPreferences = getApplicationContext().getSharedPreferences("giris",0);
+        sharedPreferences = getApplicationContext().getSharedPreferences("session",0);
         IlanVerPojo.setUye_id(sharedPreferences.getString("uye_id",null));
 
 
@@ -70,10 +70,11 @@ public class Yakit extends AppCompatActivity {
                     IlanVerPojo.setDepohacmi(depoHacmiBilgiEditText.getText().toString());
 
                     //ilanYayinla fonk. gonderiyoruz. oradan istek atıp sonuc donecek.
+
                     ilaniYayinla(IlanVerPojo.getUye_id(), IlanVerPojo.getSehir(), IlanVerPojo.getIlce(), IlanVerPojo.getMahalle(), IlanVerPojo.getMarka(),
                                 IlanVerPojo.getSeri(), IlanVerPojo.getModel(), IlanVerPojo.getYil(), IlanVerPojo.getIlantipi(), IlanVerPojo.getKimden(),
                                 IlanVerPojo.getBaslik(), IlanVerPojo.getAciklama(), IlanVerPojo.getMotortipi(), IlanVerPojo.getMotorhacmi(),IlanVerPojo.getSurat(),
-                                IlanVerPojo.getYakittipi(), IlanVerPojo.getOrtalamayakit(), IlanVerPojo.getDepohacmi(),IlanVerPojo.getKm());
+                                IlanVerPojo.getYakittipi(), IlanVerPojo.getOrtalamayakit(), IlanVerPojo.getDepohacmi(),IlanVerPojo.getKm(), IlanVerPojo.getUcret());
 
                 }else
                 {
@@ -102,12 +103,12 @@ public class Yakit extends AppCompatActivity {
                              String marka, String seri, String model, String yil,
                              String ilantipi, String kimden, String baslik, String aciklama,
                              String motortipi, String motorhacmi, String surat, String yakittipi,
-                             String ortalamayakit, String depohacmi, String km)
+                             String ortalamayakit, String depohacmi, String km, String ucret)
     {
         //bize donecek olan pojo. ve istek atma islemi
-        Call<IlanSonucPojo> request = ManagerAll.getInstance().ilanVer(uye_id, sehir,ilce, mahalle, marka, seri,
+        final Call<IlanSonucPojo> request = ManagerAll.getInstance().ilanVer(uye_id, sehir,ilce, mahalle, marka, seri,
                 model, yil, ilantipi, kimden, baslik, aciklama,
-                motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km);
+                motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km, ucret);
         request.enqueue(new Callback<IlanSonucPojo>() {
             @Override
             public void onResponse(Call<IlanSonucPojo> call, Response<IlanSonucPojo> response) {
@@ -116,9 +117,10 @@ public class Yakit extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"İlanınız Başarıyla Yayınlandı.",Toast.LENGTH_LONG).show();
                     Intent ıntent = new Intent(Yakit.this,IlanResimler.class);
-                    //resim yuklerken ilan_id lazim olacak oyuzden kullandik.
-                    ıntent.putExtra("ilan_id",response.body().getIlanId());
-                    ıntent.putExtra("uye_id",response.body().getUyeId());
+
+                    //bir baska activity'de kullanacagimiz bilgileri putExtra ile saklayaibliriz.
+                    ıntent.putExtra("ilan_id",response.body().getIlanid());
+                    ıntent.putExtra("uye_id",response.body().getUyeid());
                     startActivity(ıntent);
                     overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
                     finish();

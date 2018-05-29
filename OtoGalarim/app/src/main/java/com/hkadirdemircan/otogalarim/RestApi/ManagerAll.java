@@ -86,11 +86,11 @@ public class ManagerAll extends BaseManager {
                                        String marka, String seri, String model, String yil,
                                        String ilantipi, String kimden, String baslik, String aciklama,
                                        String motortipi, String motorhacmi, String surat, String yakittipi,
-                                       String ortalamayakit, String depohacmi, String km ){
+                                       String ortalamayakit, String depohacmi, String km, String ucret ){
 
         Call<IlanSonucPojo> x = getRestApi().ilanVer(uye_id, sehir,ilce, mahalle, marka, seri,
                                                      model, yil, ilantipi, kimden, baslik, aciklama,
-                                                     motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km);
+                                                     motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km, ucret);
 
         return x;
     }

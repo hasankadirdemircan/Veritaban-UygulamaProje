@@ -32,6 +32,13 @@
         android:textColorHint="#203040"
         android:hint="İlan Açıklamasını Giriniz"/>
 
+    <EditText
+        android:id="@+id/ilanFiyatEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#203040"
+        android:hint="Fiyat Giriniz"/>
+
      <Button
         android:id="@+id/ilanBilgisiButon"
         android:layout_width="match_parent"

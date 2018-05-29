@@ -334,6 +334,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                          sharedPreferences = getApplicationContext().getSharedPreferences("session", 0);//giris yapmis olanı birdaha sifre girmesin
                          SharedPreferences.Editor editor = sharedPreferences.edit();
                          editor.putString("uye_id", uyeId);
+
                          editor.putString("uye_KullaniciAdi",kullaniciAdi);
                          editor.commit();
                          Intent intent = new Intent(LoginActivity.this,MainActivity.class);
