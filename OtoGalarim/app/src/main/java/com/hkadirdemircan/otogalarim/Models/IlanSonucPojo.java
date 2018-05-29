@@ -2,7 +2,7 @@ package com.hkadirdemircan.otogalarim.Models;
 
 public class IlanSonucPojo{
 	private boolean tf;
-	private Object uyeId;
+	private int uyeId;
 	private String ilanId;
 
 	public void setTf(boolean tf){
@@ -13,12 +13,13 @@ public class IlanSonucPojo{
 		return tf;
 	}
 
-	public void setUyeId(Object uyeId){
-		this.uyeId = uyeId;
+
+	public int getUyeId() {
+		return uyeId;
 	}
 
-	public Object getUyeId(){
-		return uyeId;
+	public void setUyeId(int uyeId) {
+		this.uyeId = uyeId;
 	}
 
 	public void setIlanId(String ilanId){

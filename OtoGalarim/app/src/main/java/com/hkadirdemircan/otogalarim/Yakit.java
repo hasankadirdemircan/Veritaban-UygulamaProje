@@ -104,7 +104,7 @@ public class Yakit extends AppCompatActivity {
                              String motortipi, String motorhacmi, String surat, String yakittipi,
                              String ortalamayakit, String depohacmi, String km)
     {
-        //bize donecek olan pojo.
+        //bize donecek olan pojo. ve istek atma islemi
         Call<IlanSonucPojo> request = ManagerAll.getInstance().ilanVer(uye_id, sehir,ilce, mahalle, marka, seri,
                 model, yil, ilantipi, kimden, baslik, aciklama,
                 motortipi, motorhacmi, surat, yakittipi, ortalamayakit, depohacmi, km);
@@ -118,6 +118,7 @@ public class Yakit extends AppCompatActivity {
                     Intent ıntent = new Intent(Yakit.this,IlanResimler.class);
                     //resim yuklerken ilan_id lazim olacak oyuzden kullandik.
                     ıntent.putExtra("ilan_id",response.body().getIlanId());
+                    ıntent.putExtra("uye_id",response.body().getUyeId());
                     startActivity(ıntent);
                     overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
                     finish();

@@ -45,14 +45,14 @@
         android:text="Resmi Ekle"/>
 
     <Button
-        android:id="@+id/ilanYayinlaButon"
+        android:id="@+id/cikButon"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/menu_buton_back"
-        android:text="İlanı Yayınla"/>
+        android:text="Çık"/>
 
 
 </LinearLayout>

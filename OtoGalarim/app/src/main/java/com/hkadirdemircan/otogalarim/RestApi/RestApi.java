@@ -4,6 +4,7 @@ import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
+import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -35,4 +36,9 @@ public interface RestApi {
                                 @Field("ilantipi") String ilantipi, @Field("kimden") String kimden, @Field("baslik") String baslik, @Field("aciklama") String aciklama,
                                 @Field("motortipi") String motortipi, @Field("motorhacmi") String motorhacmi, @Field("surat") String surat, @Field("yakittipi") String yakittipi,
                                 @Field("ortalamayakit") String ortalamayakit, @Field("depohacmi") String depohacmi, @Field("km") String km);
+
+
+    @FormUrlEncoded
+    @POST("/ilanresmiekle.php")
+    Call<ResimEklePojo> resimYukle(@Field("uye_id") String uye_id, @Field("ilan_id") String ilan_id, @Field("resim") String base64StringResim);
 }
