@@ -1,11 +1,16 @@
 package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanDetayPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanlarimPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarimSilPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -47,7 +52,16 @@ public interface RestApi {
 
 
     //sadece uye adi atip, bilgileri cekecegiz.
-    @FormUrlEncoded
     @GET("/ilanlarim.php")
-    Call<IlanlarimPojo> ilanlarim(@Query("uyeid") String uyeid);
+    Call<List<IlanlarimPojo>> ilanlarim(@Query("uyeid") String uyeid);
+
+
+    @GET("/ilanlarimdansil.php")
+    Call<IlanlarimSilPojo> ilanlarimSil(@Query("ilan_id") String ilanid);
+
+    @GET("/ilanlar.php")
+    Call<List<IlanlarPojo>> ilanlar();
+
+    @GET("/ilandetay.php")
+    Call<IlanDetayPojo> ilanDetay(@Query("ilanid") String ilanid);
 }

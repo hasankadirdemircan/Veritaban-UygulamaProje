@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity
     String navHeaderText;
     TextView navHeaderTextView;
     SharedPreferences.Editor editor; //cikis yapma islemi icin.
-    Button ilanVerButton; //ilan ver aktivitesi icin
+    Button ilanVerButton, ilanlarimMenuButon, ilanlarButon; //ilan ver aktivitesi, ilanlarim icin
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +58,28 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 Intent ıntent  = new Intent(MainActivity.this, IlanBilgileri.class);
+                startActivity(ıntent);
+                //activity acilis kapanis a anim ekledik onu kullaniyoruz.
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+            }
+        });
+
+        ilanlarimMenuButon = (Button)findViewById(R.id.ilanlarimMenuButon);
+        ilanlarimMenuButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent  = new Intent(MainActivity.this, Ilanlarim.class);
+                startActivity(ıntent);
+                //activity acilis kapanis a anim ekledik onu kullaniyoruz.
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+            }
+        });
+
+        ilanlarButon = (Button)findViewById(R.id.ilanlarButon);
+        ilanlarButon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent ıntent  = new Intent(MainActivity.this, Ilanlar.class);
                 startActivity(ıntent);
                 //activity acilis kapanis a anim ekledik onu kullaniyoruz.
                 overridePendingTransition(R.anim.anim_in,R.anim.anim_out);

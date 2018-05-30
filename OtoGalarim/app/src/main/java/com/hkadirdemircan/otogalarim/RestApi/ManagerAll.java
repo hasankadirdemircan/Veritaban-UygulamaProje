@@ -2,11 +2,16 @@ package com.hkadirdemircan.otogalarim.RestApi;
 
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanDetayPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanlarimPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarimSilPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
+
+import java.util.List;
 
 import retrofit2.Call;
 
@@ -113,14 +118,54 @@ public class ManagerAll extends BaseManager {
     }
 
     /**
+     *bize list tipinde lazim oldugu icin list'e ceviridik.
      *
      * @param uyeid
      * @return
      */
-    public Call<IlanlarimPojo> ilanlarim(String uyeid ){
+    public Call<List<IlanlarimPojo>> ilanlarim(String uyeid ){
 
-        Call<IlanlarimPojo> x = getRestApi().ilanlarim(uyeid);
+        Call<List<IlanlarimPojo>> x = getRestApi().ilanlarim(uyeid);
 
         return x;
     }
+
+
+    /**
+     *
+     * @param ilanid
+     * @return
+     */
+    public Call<IlanlarimSilPojo> ilanlarimSil(String ilanid ){
+
+        Call<IlanlarimSilPojo> x = getRestApi().ilanlarimSil(ilanid);
+
+        return x;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Call<List<IlanlarPojo>> ilanlar(){
+
+        Call<List<IlanlarPojo>> x = getRestApi().ilanlar();
+
+        return x;
+    }
+
+
+    /**
+     *
+     * @param ilanid
+     * @return
+     */
+    public Call<IlanDetayPojo> ilanDetay(String ilanid ){
+
+        Call<IlanDetayPojo> x = getRestApi().ilanDetay(ilanid);
+
+        return x;
+    }
+
+
 }
