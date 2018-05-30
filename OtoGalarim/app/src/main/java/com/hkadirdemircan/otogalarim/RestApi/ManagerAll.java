@@ -3,6 +3,7 @@ package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarimPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
@@ -107,6 +108,18 @@ public class ManagerAll extends BaseManager {
     public Call<ResimEklePojo> resimEkle(String uye_id , String ilan_id, String image){
 
         Call<ResimEklePojo> x = getRestApi().resimYukle(uye_id, ilan_id, image);
+
+        return x;
+    }
+
+    /**
+     *
+     * @param uyeid
+     * @return
+     */
+    public Call<IlanlarimPojo> ilanlarim(String uyeid ){
+
+        Call<IlanlarimPojo> x = getRestApi().ilanlarim(uyeid);
 
         return x;
     }

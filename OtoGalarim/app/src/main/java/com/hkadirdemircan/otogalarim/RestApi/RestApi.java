@@ -2,6 +2,7 @@ package com.hkadirdemircan.otogalarim.RestApi;
 
 import com.hkadirdemircan.otogalarim.Models.DogrulamaPojo;
 import com.hkadirdemircan.otogalarim.Models.IlanSonucPojo;
+import com.hkadirdemircan.otogalarim.Models.IlanlarimPojo;
 import com.hkadirdemircan.otogalarim.Models.LoginPojo;
 import com.hkadirdemircan.otogalarim.Models.RegisterPojo;
 import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
@@ -9,7 +10,9 @@ import com.hkadirdemircan.otogalarim.Models.ResimEklePojo;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 /**
  * Created by Hkadir on 27.03.2018.
@@ -41,4 +44,10 @@ public interface RestApi {
     @FormUrlEncoded
     @POST("/ilanresmiekle.php")
     Call<ResimEklePojo> resimYukle(@Field("uye_id") String uye_id, @Field("ilan_id") String ilan_id, @Field("resim") String base64StringResim);
+
+
+    //sadece uye adi atip, bilgileri cekecegiz.
+    @FormUrlEncoded
+    @GET("/ilanlarim.php")
+    Call<IlanlarimPojo> ilanlarim(@Query("uyeid") String uyeid);
 }
